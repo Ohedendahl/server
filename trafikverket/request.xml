@@ -1,0 +1,10 @@
+<REQUEST>
+      <LOGIN authenticationkey="4254096466de431cb73c2e296e5b300d" />
+      <QUERY objecttype="WeatherStation">
+            <FILTER>
+                  <EQ name="Name" value="Högakustenbron Topp" />
+            </FILTER>
+            <INCLUDE>Measurement.Air.Temp</INCLUDE>
+            <INCLUDE>Measurement.MeasureTime</INCLUDE>
+      </QUERY>
+</REQUEST>
