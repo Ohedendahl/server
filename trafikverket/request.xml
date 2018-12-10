@@ -5,6 +5,5 @@
                   <EQ name="Name" value="Högakustenbron Topp" />
             </FILTER>
             <INCLUDE>Measurement.Air.Temp</INCLUDE>
-            <INCLUDE>Measurement.MeasureTime</INCLUDE>
       </QUERY>
 </REQUEST>
