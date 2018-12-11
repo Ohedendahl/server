@@ -41,26 +41,36 @@ public class tvtest {
 				buf.append( cbuf, 0, num );
 			}
 			String result = buf.toString();
-			System.err.println( "\nResponse from server after POST:\n" + result);
+			//System.err.println( "\nResponse from server after POST:\n" + result);
 
 			JSONObject obj = new JSONObject(result);
 			JSONArray arr = obj.getJSONObject("RESPONSE").getJSONArray("RESULT");
 
+
 			for(int i=0; i<arr.length();i++) {
 
 				JSONObject obj2 = arr.getJSONObject(i);
-				JSONArray ws = obj2.getJSONArray("WeatherStation");
-				System.out.println("\nTESTAR: " + ws);
+				JSONArray situation = obj2.getJSONArray("Situation");
 
-				for(int j=0; j<ws.length();j++) {
+					for(int j=0; j<situation.length();j++) {
 
-						JSONObject mt = ws.getJSONObject(j);
-						JSONObject obj3 = mt.getJSONObject("Measurement");
-						System.out.println("TESTAR IGEN: " + obj3);
+						JSONObject obj3 = situation.getJSONObject(j);
+						JSONArray deviation = obj3.getJSONArray("Deviation");
 
-						JSONObject obj4 = obj3.getJSONObject("Air");
-						double temptest = obj4.getDouble("Temp");
-						System.out.println("TEMPERATUR: " + temptest + " grader");
+							for(int k=0; k<deviation.length();k++) {
+
+									JSONObject objects = deviation.getJSONObject(k);
+
+									//System.out.println(objects);
+									String messagetype = objects.optString("MessageType");
+									String message = objects.optString("Message");
+									String locationdescriptor = objects.optString("LocationDescriptor");
+									System.out.println("Beskrivning: " + message);
+									System.out.println("Typ: " + messagetype);
+									System.out.println("Plats: " + locationdescriptor + "\n");
+									
+
+							}
 					}
 				}
 		}
