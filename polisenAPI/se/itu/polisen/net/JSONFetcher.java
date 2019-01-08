@@ -11,16 +11,17 @@ import java.time.format.DateTimeFormatter;
 public class JSONFetcher {
 
 	private static final String END_POINT = "https://polisen.se/api/";
-	private static final String DEFAULT_QUERY = "events?locationname=Göteborg&DateTime=";
+	private static final String DEFAULT_QUERY = "events?locationname=Göteborg";
+	//private static final String DEFAULT_QUERY = "events?locationname=Göteborg&DateTime=";
 
 	LocalDate date = LocalDate.now();
 	DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 	public String fetch(String query) {
 		if (query == null || query.equals("")) {
-			query = DEFAULT_QUERY + currentDate.format(date);
+			query = DEFAULT_QUERY; // + currentDate.format(date);
 		}
-		String result = "";
+		String result;
 		try {
 			System.out.println("Using this query: " + query);
 			System.out.println("Current date: " + currentDate.format(date));
@@ -31,7 +32,7 @@ public class JSONFetcher {
 			BufferedReader reader =
 			new BufferedReader(new InputStreamReader
 										 (url.openStream()));
-
+									 
 			for(String line : reader.lines().collect(Collectors.toList())) {
 				response.append(line);
 				}
@@ -40,5 +41,6 @@ public class JSONFetcher {
 					throw new RuntimeException("Problem fetching JSON: " + e.getMessage(), e);
 				}
 				return result;
+
 	}
 }

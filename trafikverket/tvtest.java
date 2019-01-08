@@ -68,7 +68,7 @@ public class tvtest {
 									System.out.println("Beskrivning: " + message);
 									System.out.println("Typ: " + messagetype);
 									System.out.println("Plats: " + locationdescriptor + "\n");
-									
+
 
 							}
 					}

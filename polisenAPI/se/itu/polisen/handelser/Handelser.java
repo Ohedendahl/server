@@ -33,6 +33,7 @@ public class Handelser {
   @Override
   public String toString() {
   return new StringBuilder()
+    .append("\n")
     .append("Plats: " + location)
     .append("\n")
     .append("Tidpunkt: " + datetime)
