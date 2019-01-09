@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import se.itu.polisen.handelser.*;
 import se.itu.polisen.net.*;
 import static se.itu.polisen.json.HandelseParser.parse;
+import filter.CustomCharacterEncodingFilter;
 
 import org.json.JSONException;
 
@@ -17,11 +18,12 @@ public class SnutNytt extends HttpServlet{
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException{
-    response.setContentType("text/html; charset=UTF-8");
+    
+    response.setContentType("text/html;charset=UTF-8");
 
     PrintWriter out =
     new PrintWriter(new OutputStreamWriter(response.getOutputStream(),
-    "UTF-8"), true);
+    StandardCharsets.UTF_8), true);
 
     String json = null;
     try{
@@ -59,5 +61,6 @@ public class SnutNytt extends HttpServlet{
       .append("</html>\n");
     out.println(sb.toString());
     out.close();
+
   }
 }
