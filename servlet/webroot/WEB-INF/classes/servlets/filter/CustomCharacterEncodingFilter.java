@@ -1,4 +1,4 @@
-package filter;
+package servlets.filter;
 import java.io.IOException;
 import java.util.Enumeration;
 
